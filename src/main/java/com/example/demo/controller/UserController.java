@@ -11,9 +11,14 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public Long register() {
+    public String register() {
         User newUser = new User();
         userRepository.save(newUser);
         return newUser.getId();
     }
+
+    /*@PostMapping("/user_info")
+    public Long user_info(){
+
+    }*/
 }
