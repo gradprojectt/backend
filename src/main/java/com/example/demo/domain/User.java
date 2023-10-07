@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.domain;
+
+import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,4 +14,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
+

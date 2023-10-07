@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.controller;
 
+import com.example.demo.domain.FileService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Context;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
