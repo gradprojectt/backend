@@ -25,6 +25,15 @@ public class UserService {
         return user.getId();
     }
 
+    public User findUserByUserId(String userId) {
+        List<User> users = userRepository.findByUserId(userId);
+        if (!users.isEmpty()) {
+            return users.get(0);  // 첫 번째 매칭되는 사용자 반환
+        } else {
+            return null;  // 매칭되는 사용자가 없으면 null 반환
+        }
+    }
+
     private void validateDuplicateMember(User user) {
         List<User> findUsers = userRepository.findByUserId(user.getUserId());
         if(!findUsers.isEmpty()) {

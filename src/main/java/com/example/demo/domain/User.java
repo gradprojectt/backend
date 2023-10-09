@@ -17,5 +17,7 @@ public class User {
     @Column(name = "user_id")
     @NotEmpty
     private String userId;
+    private String nickName;
+    private String personalColor;
 
 }
