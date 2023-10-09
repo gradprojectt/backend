@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.api;
 
 import com.example.demo.domain.FileService;
 import lombok.extern.slf4j.Slf4j;
