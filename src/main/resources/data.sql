@@ -1,2 +1,2 @@
-INSERT INTO user(user_id)
-VALUES ( 'seyeon');
+/*INSERT INTO user(user_id)
+VALUES ( 'seyeon');*/
