@@ -1,4 +1,4 @@
-/*package com.example.demo.service;
+package com.example.demo.service;
 
 import com.example.demo.domain.User;
 import com.example.demo.repository.UserRepository;
@@ -57,4 +57,4 @@ public class UserServiceTest {
         fail("예외가 발생해야 한다.");
     }
 
-}*/
+}
