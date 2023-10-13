@@ -7,9 +7,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collections;
@@ -24,7 +22,12 @@ public class UserController {
     private final UserService userService;
 
 
-    @PostMapping("/user_id")
+    @GetMapping("/{user_id}")
+    public CreateUserResponse getUser(@PathVariable("user_id") String userId ) {
+        return new CreateUserResponse(userId);
+    }
+
+    /*@PostMapping("/user_id")
     public CreateUserResponse saveUser(@RequestBody @Valid CreateUserRequest request) {
 
         User user = new User();
@@ -32,7 +35,7 @@ public class UserController {
 
         userService.join(user);
         return new CreateUserResponse(request.getUserid());
-    }
+    }*/
 
     @PostMapping("/user_info")
     public ResponseEntity<UserInfoResponse> getUserInfo(@RequestBody UserInfoRequest request) {
@@ -64,10 +67,10 @@ public class UserController {
         }
     }*/
 
-    @Data
+   /* @Data
     static class CreateUserRequest {
         private String userid;
-    }
+    }*/
 
     @Data
     static class CreateUserResponse {
