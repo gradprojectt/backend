@@ -18,6 +18,8 @@ public class User {
     @NotEmpty
     private String userId;
     private String nickName;
-    private String personalColor;
+    private String pccs;
+    private String season;
+    private String tone;
 
 }

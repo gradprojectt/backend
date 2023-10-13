@@ -40,7 +40,7 @@ public class UserController {
             User user = userService.findUserByUserId(request.getUserId());
 
             if (user != null) {
-                return ResponseEntity.ok(new UserInfoResponse(user.getNickName(), user.getPersonalColor()));
+                return ResponseEntity.ok(new UserInfoResponse(user.getNickName(), user.getPccs(), user.getSeason(), user.getTone()));
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
@@ -86,12 +86,16 @@ public class UserController {
     @Data
     static class UserInfoResponse{
         private String nickName;
-        private String personalColor;
+        private String pccs;
+        private String season;
+        private String tone;
 
         // Constructor for successful response.
-        public UserInfoResponse(String nickName, String personalColor){
+        public UserInfoResponse(String nickName, String pccs, String season, String tone){
             this.nickName = nickName;
-            this.personalColor = personalColor;
+            this.pccs = pccs;
+            this.season = season;
+            this.tone = tone;
         }
     }
 
