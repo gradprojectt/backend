@@ -34,4 +34,12 @@ public class UserRepository {
                 .getResultList();
     }
 
+    public List<User> findById(String id) {
+        System.out.println("repo");
+//        where m.id = :id
+        return em.createQuery("select m from User m ", User.class)
+//                .setParameter("id", id)
+                .getResultList();
+    }
+
 }

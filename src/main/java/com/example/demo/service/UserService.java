@@ -34,6 +34,16 @@ public class UserService {
         }
     }
 
+    public User findUserById(String Id) {
+        List<User> users = userRepository.findById(Id);
+        System.out.println("service ");
+        if (!users.isEmpty()) {
+            return users.get(0);  // 첫 번째 매칭되는 사용자 반환
+        } else {
+            return null;  // 매칭되는 사용자가 없으면 null 반환
+        }
+    }
+
     private void validateDuplicateMember(User user) {
         List<User> findUsers = userRepository.findByUserId(user.getUserId());
         if(!findUsers.isEmpty()) {

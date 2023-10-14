@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,9 +23,16 @@ public class UserController {
     private final UserService userService;
 
 
-    @GetMapping("/{user_id}")
-    public CreateUserResponse getUser(@PathVariable("user_id") String userId ) {
-        return new CreateUserResponse(userId);
+    @GetMapping("/user_id")
+    public String getUserId() {
+        User newUser = new User();
+        UUID new_uuid = UUID.randomUUID();
+        String new_user_id = new_uuid.toString();
+        newUser.setUserId(new_user_id);
+//        System.out.println(newUser.toString());
+//        System.out.println(newUser.getId().toString());
+        this.userService.join(newUser);
+        return new_user_id;
     }
 
     /*@PostMapping("/user_id")
@@ -40,7 +48,10 @@ public class UserController {
     @PostMapping("/user_info")
     public ResponseEntity<UserInfoResponse> getUserInfo(@RequestBody UserInfoRequest request) {
         try {
+//            System.out.println(request.getId());
+
             User user = userService.findUserByUserId(request.getUserId());
+//            System.out.println(user.toString());
 
             if (user != null) {
                 return ResponseEntity.ok(new UserInfoResponse(user.getNickName(), user.getPccs(), user.getSeason(), user.getTone()));
