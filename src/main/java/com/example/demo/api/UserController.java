@@ -63,6 +63,24 @@ public class UserController {
         }
     }
 
+    @PutMapping("/nick_name")
+    public ResponseEntity<NicknameResponse> modifyNickname(@RequestBody NicknameRequest request) {
+        try {
+            User updatedUser = userService.modifyNickname(request.getUserId(), request.getNewNickname());
+
+            if (updatedUser != null) {
+                return ResponseEntity.ok(new NicknameResponse(updatedUser.getUserId(), updatedUser.getNickName()));
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+
+
 
     /*public ResponseEntity<UserInfoResponse> getUserInfo(@RequestBody UserInfoRequest request) {
         try {
@@ -110,6 +128,23 @@ public class UserController {
             this.pccs = pccs;
             this.season = season;
             this.tone = tone;
+        }
+    }
+
+    @Data
+    static class NicknameRequest{
+        private String userId;
+        private String newNickname;
+    }
+
+    @Data
+    static class NicknameResponse{
+        private String userId;
+        private String nickName;
+
+        public NicknameResponse(String userId, String nickName){
+            this.userId = userId;
+            this.nickName = nickName;
         }
     }
 

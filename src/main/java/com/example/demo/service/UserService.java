@@ -24,6 +24,23 @@ public class UserService {
         userRepository.save(user);
         return user.getId();
     }
+    @Transactional
+    public Long update(User user) {
+        userRepository.save(user);
+        return user.getId();
+    }
+
+    @Transactional  // Add this annotation to allow fetching and updating in one transaction.
+    public User modifyNickname(String userId, String newNickname) {
+        User user = findUserByUserId(userId);
+
+        if (user != null) {
+            user.setNickName(newNickname);
+            update(user);  // Save changes.
+        }
+
+        return user;  // Return updated user. Might be null if there was no such user.
+    }
 
     public User findUserByUserId(String userId) {
         List<User> users = userRepository.findByUserId(userId);
